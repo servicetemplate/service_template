@@ -1,0 +1,4 @@
+class <%= name.classify %>Representer < ServiceTemplate::Representer
+  property :id, type: String
+
+end

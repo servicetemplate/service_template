@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'service_template/cli'
+
+ServiceTemplate::CLI::Base.start(ARGV)

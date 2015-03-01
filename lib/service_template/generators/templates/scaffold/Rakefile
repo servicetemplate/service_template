@@ -1,0 +1,21 @@
+#!/usr/bin/env rake
+require 'bundler/setup'
+require 'service_template/setup'
+require 'dotenv'
+require 'grape/activerecord/rake'
+ServiceTemplate.load_environment
+
+require './app'
+require 'json'
+
+# active record tasks
+namespace :db do
+  # Some db tasks require your app code to be loaded
+  task :environment do
+    require_relative 'app'
+  end
+end
+
+Dir.glob('./lib/tasks/*.rake').each { |r| import r }
+
+

@@ -1,0 +1,40 @@
+class <%= name.classify.pluralize %>Api < Grape::API
+  desc 'Get a list of <%= name.underscore.tableize %>'
+  params do
+    optional :ids, type: Array, desc: 'Array of <%= name.underscore %> ids'
+  end
+  get do
+    <%= name.underscore.tableize %> = params[:ids] ? <%= name.classify %>.where(id: params[:ids]) : <%= name.classify %>.all
+    represent <%= name.underscore.tableize %>, with: <%= name.classify %>Representer
+  end
+
+  desc 'Create an <%= name.underscore %>'
+  params do
+  end
+
+  post do
+    <%= name.underscore %> = <%= name.classify %>.create!(permitted_params)
+    represent <%= name.underscore %>, with: <%= name.classify %>Representer
+  end
+
+  params do
+    requires :id, desc: 'ID of the <%= name.underscore %>'
+  end
+  route_param :id do
+    desc 'Get an <%= name.underscore %>'
+    get do
+      <%= name.underscore %> = <%= name.classify %>.find(params[:id])
+      represent <%= name.underscore %>, with: <%= name.classify %>Representer
+    end
+
+    desc 'Update an <%= name.underscore %>'
+    params do
+    end
+    put do
+      # fetch <%= name.underscore %> record and update attributes.  exceptions caught in app.rb
+      <%= name.underscore %> = <%= name.classify %>.find(params[:id])
+      <%= name.underscore %>.update_attributes!(permitted_params)
+      represent <%= name.underscore %>, with: <%= name.classify %>Representer
+    end
+  end
+end

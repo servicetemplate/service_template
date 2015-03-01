@@ -1,0 +1,24 @@
+Documentation:
+  Enabled: false
+
+Encoding:
+  EnforcedStyle: when_needed
+
+LineLength:
+  Max: 120
+
+# This cop checks for big numeric literals without _ between groups of digits in them.
+# ie: 100_000 vs 100000
+NumericLiterals:
+  Enabled: false
+
+# how to bubble up exceptions (raise or fail)
+SignalException:
+  EnforcedStyle: only_raise
+
+MethodLength:
+  Max: 30
+
+AllCops:
+  Exclude:
+    - db/schema.rb
