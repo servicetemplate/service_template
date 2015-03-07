@@ -36,9 +36,9 @@ describe ServiceTemplate::Generators::ScaffoldGenerator do
       expect(Dir).to exist(app_path)
     end
 
-    it 'creates a .env file with with a development database name' do
-      expect(File).to exist("#{app_path}/.env")
-      env_file = File.read("#{app_path}/.env")
+    it 'creates a .env.development file with with a development database name' do
+      expect(File).to exist("#{app_path}/.env.development")
+      env_file = File.read("#{app_path}/.env.development")
       expect(env_file).to match(/#{app_name}_development/)
     end
 

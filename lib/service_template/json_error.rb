@@ -1,9 +1,8 @@
 module ServiceTemplate
   class JsonError
-    def initialize(code, message, reasons={})
+    def initialize(code, detail)
       @code = code
-      @message = message
-      @reasons = reasons
+      @detail = detail
     end
 
     def to_json(options = {})
@@ -14,11 +13,9 @@ module ServiceTemplate
       e = {
         error: {
           code: @code,
-          message: @message
+          detail: @detail
         }
       }
-      e[:error][:reasons] = @reasons if @reasons.present?
-      e
     end
   end
 end
