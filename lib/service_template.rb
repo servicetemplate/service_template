@@ -31,7 +31,6 @@ require 'service_template/middleware/authentication'
 require 'service_template/middleware/request_stats'
 require 'service_template/middleware/database_stats'
 require 'service_template/authentication'
-require 'service_template/sortable_api'
 
 require 'service_template/deploy'
 require 'service_template/gem_dependency'

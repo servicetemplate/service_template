@@ -7,7 +7,7 @@ describe Grape::ErrorFormatter::Json do
       error = Grape::ErrorFormatter::Json.call('test message', nil)
       parsed = JSON.parse(error)
       expect(parsed['error']['code']).to eq('api_error')
-      expect(parsed['error']['message']).to eq('test message')
+      expect(parsed['error']['detail']).to eq('test message')
     end
 
     it 'returns a specified error when given a ServiceTemplate::JsonError object' do
@@ -15,7 +15,7 @@ describe Grape::ErrorFormatter::Json do
       error = Grape::ErrorFormatter::Json.call(json_error, nil)
       parsed = JSON.parse(error)
       expect(parsed['error']['code']).to eq('foo')
-      expect(parsed['error']['message']).to eq('bar')
+      expect(parsed['error']['detail']).to eq('bar')
     end
 
     it 'adds the backtrace with rescue_option[:backtrace] specified' do
