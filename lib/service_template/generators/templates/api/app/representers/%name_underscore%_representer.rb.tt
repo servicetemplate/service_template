@@ -1,4 +1,4 @@
-class <%= name.classify %>Representer < ServiceTemplate::Representer
+class <%= name.classify %>Representer < ServiceTemplate::JsonApiRepresenter
   property :id, type: String
 
 end

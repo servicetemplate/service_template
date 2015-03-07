@@ -37,10 +37,10 @@ describe ServiceTemplate::Generators::ApiGenerator do
       expect(representer_code).to match(/class FooRepresenter/)
     end
 
-    it 'representers should inherit from ServiceTemplate::Representer' do
+    it 'representers should inherit from ServiceTemplate::JsonApiRepresenter' do
       representer_file = File.join(test_api_directory, 'app/representers/foo_representer.rb')
       require "./#{representer_file}"
-      expect(FooRepresenter.superclass).to be(ServiceTemplate::Representer)
+      expect(FooRepresenter.superclass).to be(ServiceTemplate::JsonApiRepresenter)
     end
   end
 
