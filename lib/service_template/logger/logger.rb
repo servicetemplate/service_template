@@ -22,10 +22,13 @@ module ServiceTemplate
 
           @logger = Logging.logger["[#{name}]"]
           @logger.add_appenders 'stdout' unless ServiceTemplate.env.test?
-          @logger.add_appenders "log/#{ServiceTemplate.env}.log"
         end
 
         @logger
+      end
+
+      def log_file=(filename)
+        @logger.add_appenders filename
       end
 
       def response(status, headers, body)
